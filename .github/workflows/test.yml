@@ -1,0 +1,17 @@
+name: Test Integration Publisher
+
+on: push
+
+jobs:
+  publish_no_op_integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish Integration
+        uses: ./
+        with:
+          PATH_TO_YML: tests/no-op-integration.yml
+          PRISMATIC_URL: ${{ vars.PRISMATIC_URL }}
+          PRISM_REFRESH_TOKEN: ${{ secrets.PRISM_REFRESH_TOKEN }}
+          INTEGRATION_ID: ${{ vars.NO_OP_INTEGRATION_ID }}
+          MAKE_AVAILABLE_IN_MARKETPLACE: false

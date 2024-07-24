@@ -1,0 +1,52 @@
+category: ""
+configPages:
+  - elements: []
+    name: Configuration
+defaultInstanceProfile: Default Instance Profile
+definitionVersion: 7
+description: ""
+documentation: ""
+endpointType: flow_specific
+flows:
+  - endpointSecurityType: customer_optional
+    isSynchronous: false
+    name: Flow 1
+    steps:
+      - action:
+          key: webhook
+          component:
+            isPublic: true
+            key: webhook-triggers
+            version: LATEST
+        description: ""
+        inputs:
+          body:
+            type: value
+            value: ""
+          contentType:
+            type: value
+            value: ""
+          headers:
+            type: complex
+            value: []
+          statusCode:
+            type: value
+            value: ""
+        isTrigger: true
+        name: Trigger
+      - action:
+          key: runCode
+          component:
+            isPublic: true
+            key: code
+            version: LATEST
+        description: ""
+        inputs:
+          code:
+            type: value
+            value: |
+              module.exports = async ({ logger, configVars }, stepResults) => {
+                return { data: null };
+              };
+        name: Code Block
+name: No-Op Integration
